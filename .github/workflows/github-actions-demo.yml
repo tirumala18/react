@@ -1,14 +1,25 @@
-name: Sync B2 Bucket
-on: push
+name: Sync app
+on:
+  push:
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  sync:
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@master
-    - uses: jakejarvis/backblaze-b2-action@master
-      env:
-        SOURCE_DIR: 'public'
-        B2_BUCKET: ${{ secrets.B2_BUCKET }}
-        B2_APPKEY_ID: ${{ secrets.B2_APPKEY_ID }}
-        B2_APPKEY: ${{ secrets.B2_APPKEY }}
+      - uses: actions/checkout@v2.4.0
+
+      - uses: sylwit/install-b2-cli-action@v1.0.0
+        env:
+          B2_APPLICATION_KEY_ID: ${{ secrets.B2_APPKEY_ID }}
+          B2_APPLICATION_KEY: ${{ secrets.B2_APPKEY }}
+
+      - name: Sync
+        run: b2 sync public b2://reactapp
+        
+        
+        
+        
+        
+        
+        
+       
