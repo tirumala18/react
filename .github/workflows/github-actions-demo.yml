@@ -14,7 +14,7 @@ jobs:
           B2_APPLICATION_KEY: ${{ secrets.B2_APPKEY }}
 
       - name: Sync
-        run: b2 sync --compareVersions {none,modTime,size} src b2://reactapp/src
+        run: b2 sync [--compareVersions size] src b2://reactapp/src
         
         
         
