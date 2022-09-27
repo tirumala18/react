@@ -14,7 +14,7 @@ jobs:
           B2_APPLICATION_KEY: ${{ secrets.B2_APPKEY }}
 
       - name: Sync
-        run: b2 sync Dockerfile b2://reactapp
+        run: b2 sync public b2://reactapp
         
         
         
